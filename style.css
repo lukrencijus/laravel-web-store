@@ -1,0 +1,36 @@
+body {
+    background: rgb(0, 200, 255);
+    color: rgb(255, 8, 8);
+}
+
+h1 {
+    color:hotpink;
+    text-align: center;
+}
+
+p {
+    color:firebrick;
+    border: 3px solid green;
+    padding: 20px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 20px auto;
+}
+
+.heading {
+    color: gold;
+    font-size: 2em;
+}
+
+.border {
+    border-bottom: 3px solid gold;
+    padding-bottom: 10px;
+}
+
+#lead {
+    color: blueviolet;
+}
