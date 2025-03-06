@@ -35,15 +35,18 @@ a {
     border-radius: 20px;
 }
 
+a:hover {
+    color: hotpink;
+}
+
 table {
     margin: auto;
 }
 
 .small-img {
-    width: 200px;
-    height: 200px;
     display: block;
-    margin: 20px auto;
+    margin: 30px auto;
+    color: hotpink;
 }
 
 .big-img {
