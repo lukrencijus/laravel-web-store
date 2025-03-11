@@ -5,13 +5,14 @@
 }
 
 body {
-    background: rgb(0, 200, 255);
+    background: linear-gradient(lightskyblue, pink);
+    height: 100%;
     color: rgb(255, 8, 8);
     text-align: center;
-    text-transform: capitalize;  
+    text-transform: capitalize;
 }
 
-h1 {
+.buy {
     color:hotpink;
     text-align: center;
     text-shadow: 2px 2px 2px black;
@@ -91,6 +92,8 @@ table {
 
 nav {
   text-align: center;  
+  border-bottom: 3px solid gold;
+  padding-bottom: 10px;
 }
 
 .main-nav a {
