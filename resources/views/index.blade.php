@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store page</title>
+
+    <!-- Bootstrap CSS style file (local) -->
+    <link href="{{ asset('bootstrap-5.3.5-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="{{ asset('@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet">
+    
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <i class="fa-solid fa-store fa-10x small-img"></i>
+
+    <div class="fa-4x">
+        <i class="fas fa-face-smile fa-pulse icon-img"></i>
+    </div>
+
+    <h1 class="border buy">Welcome to our store</h1>
+
+    <p>Here you will find best products</p>
+    <a href="https://www.google.com/maps" target="_blank" title="Our store on google maps">Click here to visit us</a><br>
+    <p>or</p>
+    <a href="{{ url('/about') }}" target="_blank" title="about us">Click here to read about us</a>
+
+    <h2> We sell:</h2>
+    <ul>
+        <li>Fridges</li>
+        <li>Beds</li>
+        <li>Tables</li>
+        <li>Chairs</li>
+    </ul>
+
+    <h2>Our best selling:</h2>
+    <ol>
+        <li>Cabinets</li>
+        <li>Dressers</li>
+        <li>Wardrobes</li>
+    </ol>
+
+    <h2>Our prices:</h2>
+
+    <table border="5">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Cabinet</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Fridge</td>
+            <td>230</td>
+        </tr>
+        <tr>
+            <td>Chair</td>
+            <td>30</td>
+        </tr>
+    </table>
+
+    <h2>Our availability:</h2>
+
+    <table border="5">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Beds</td>
+                <td>100</td>
+            </tr>
+            <tr>
+                <td>Tables</td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>Wardrobes</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 class="heading">Form to order</h2>
+
+    <form action="#" method="get">
+        <label for="fname">Name</label>
+        <input id="fname" type="text" name="fname" placeholder="Peter" required>
+        <br><br>
+
+        <label for="lname">Surname</label>
+        <input id="lname" type="text" name="lname" placeholder="Parker" required>
+        <br><br>
+
+        <label for="item">Item</label>
+        <input id="item" type="text" name="item" placeholder="Chair" required>
+        <br><br>
+
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" placeholder="example@gmail.com" required>
+        <br><br>
+
+        <input type="submit">
+    </form>
+
+    <img src="https://plus.unsplash.com/premium_photo-1688125414593-391cf90f3103?q=80&w=2564&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="big-img" alt="Furniture">
+
+    <div class="container">
+        <div class="box translate">Visit us</div>
+        <div class="box rotate">About us</div>
+        <div class="box scale">Contact us</div>
+    </div>
+
+    <div class="photo-container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1551298370-9d3d53740c72?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="yellow chair">
+            <p>Pastel seats</p>
+        </div>
+        <div class="card">
+            <img src="https://plus.unsplash.com/premium_photo-1670950411934-e21abf39191e?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="black table">
+            <p>Dining table</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="stool">
+            <p>Studio stool</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1599696848652-f0ff23bc911f?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="couch">
+            <p>Living room</p>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1579656592043-a20e25a4aa4b?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="chair">
+            <p>Sofa chair</p>
+        </div>
+    </div>
+
+    <!-- JavaScript for icons -->
+    <script src="{{ asset('@fortawesome/fontawesome-free/css/all.css') }}"></script>
+
+    <!-- JavaScript for Bootstrap (local) -->
+    <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
+
+
+</body>
+
+</html>
