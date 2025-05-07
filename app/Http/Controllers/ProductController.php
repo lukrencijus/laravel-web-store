@@ -8,7 +8,21 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function index(){
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::orderBy('created_at', 'desc')->paginate(12);
+
         return view ('products.index', ["products" => $products]);
     }
+
+    public function show($id){
+    $product = Product::findOrFail($id);
+    return view('products.show', [
+        'product' => $product
+    ]);
+    }
+
+    public function create(){
+        return view('products.create');
+    }
+
+
 }

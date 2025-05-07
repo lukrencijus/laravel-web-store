@@ -3,15 +3,13 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title>Shop Homepage</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
-        <link href="bootstrap-icons-1.12.1/bootstrap-icons.css" rel="stylesheet" />
+        <link href="{{ asset('bootstrap-icons-1.12.1/bootstrap-icons.css') }}" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     </head>
     <body>
          <!-- Navigation-->
@@ -26,8 +24,17 @@
                 </div>
             </div>
         </header>
+
+        {{-- Button --}}
+        <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
+            <div class="d-grid gap-2">
+              <a href="{{ route('products') }}" class="btn btn-outline-secondary" role="button">
+                View all products
+              </a>
+            </div>
+          </div>          
+
         <!-- Section-->
-        <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     <div class="col mb-5">
@@ -235,6 +242,6 @@
         <!-- JavaScript for Bootstrap (local) -->
         <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
+        <script src="{{ asset('js/scripts.js') }}"></script>
     </body>
 </html>
