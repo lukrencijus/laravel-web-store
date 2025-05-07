@@ -32,6 +32,8 @@
                                         <span class="text-muted text-decoration-line-through">${{ number_format($product['old_price'], 2) }}</span>
                                     @endif
                                     ${{ number_format($product['price'], 2) }}
+                                    <!-- Product category-->
+                                    <p class="">{{ $product->category->name }}</p>
                                 </div>
                             </div>
                             <!-- Product actions-->

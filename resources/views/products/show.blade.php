@@ -32,6 +32,7 @@
             <div class="col-md-6">
                 <div class="small mb-1">Product ID: {{ $product->id }}</div>
                 <h1 class="display-5 fw-bolder">{{ $product->name }}</h1>
+                <p class="">Category: {{ $product->category->name }}</p>
                 <div class="fs-5 mb-5">
                     <span>${{ number_format($product->price, 2) }}</span>
                 </div>
