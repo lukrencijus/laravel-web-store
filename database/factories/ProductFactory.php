@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Category;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -19,7 +20,10 @@ class ProductFactory extends Factory
         return [
             'name' => fake()->name(),
             'price' => fake()->numberBetween(100, 500),
-            'desc' => fake()->realText(20)
+            'desc' => fake()->realText(20),
+            'category_id' => Category::inRandomOrder()->first()->id,
+            'image' => fake()->imageUrl(450, 300, 'products', true),
+            'is_available' => fake()->boolean(80),
         ];
     }
 }
