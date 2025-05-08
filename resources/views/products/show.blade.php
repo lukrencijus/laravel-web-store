@@ -52,6 +52,18 @@
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
+
+                    <form action="{{ route('products_destroy', $product->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button
+                        class="btn"
+                        type="submit"
+                        >
+                        Delete product
+                    </button>
+                    </form>
+
                 </div>
             </div>
         </div>

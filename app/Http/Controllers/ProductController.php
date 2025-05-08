@@ -30,13 +30,21 @@ class ProductController extends Controller
     public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|integer|min:0|max:1000',
-            'desc' => 'required|string|min:0|max:1000',
+            'price' => 'required|integer|min:0',
+            'desc' => 'required|string|min:0',
             'category_id' => 'required|exists:categories,id',
         ]);
 
         Product::create($validated);
 
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success','Product Created!');
+    }
+
+    public function destroy($id){
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products')->with('success','Product Deleted!');;
+
     }
 }

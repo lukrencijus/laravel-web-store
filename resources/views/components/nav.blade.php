@@ -133,6 +133,11 @@
         </div>
         <!-- Container wrapper -->
       </nav>
+      @if (session('success'))
+        <div id="flash" class="alert alert-success text-center fw-bold" role="alert">
+          {{ session('success') }}
+        </div>
+      @endif    
 
 
 </body>
