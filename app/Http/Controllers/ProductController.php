@@ -14,8 +14,8 @@ class ProductController extends Controller
         return view ('products.index', ["products" => $products]);
     }
 
-    public function show($id){
-    $product = Product::with('category')->findOrFail($id);
+    public function show(Product $product){
+    $product->load('category');
     return view('products.show', [
         'product' => $product
     ]);
@@ -40,11 +40,33 @@ class ProductController extends Controller
         return redirect()->route('products')->with('success','Product Created!');
     }
 
-    public function destroy($id){
-        $product = Product::findOrFail($id);
+    public function destroy(Product $product){
         $product->delete();
 
         return redirect()->route('products')->with('success','Product Deleted!');;
 
+    }
+
+    public function edit(Product $product){
+        $product->load('category');
+        $categories = Category::all();
+        return view('products.edit', [
+            'product' => $product,
+            'categories' => $categories,
+        ]);
+    }
+
+    public function update(Request $request, Product $product){
+
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|integer|min:0',
+            'desc' => 'required|string|min:0',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+
+        $product->update($validated);
+
+        return redirect()->route('products')->with('success','Product updated!');
     }
 }

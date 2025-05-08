@@ -48,7 +48,7 @@
                     <button
                         class="btn btn-outline-dark flex-shrink-0"
                         type="button"
-                    >
+                        >
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
@@ -57,12 +57,21 @@
                         @csrf
                         @method('DELETE')
                         <button
-                        class="btn"
+                        class="btn btn-outline-dark"
                         type="submit"
                         >
                         Delete product
-                    </button>
+                        </button>
                     </form>
+
+                    <form action="{{ route('edit', ['product' => $product->id]) }}" method="GET">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i></i>
+                            Edit product
+                        </button>
+                    </form>
+                    
+                    
 
                 </div>
             </div>
