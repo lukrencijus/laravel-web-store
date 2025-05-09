@@ -6,7 +6,7 @@
     <title>Navigation bar</title>
 
     <style>
-    .nav-item {
+      .nav-item {
         padding: 0.5rem 0xp;
       }
       
