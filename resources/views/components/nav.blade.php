@@ -41,32 +41,39 @@
                     </li>
                 </ul>
 
-                <form class="d-flex" action="{{ route('logout') }}" method="POST">
-                  @csrf
-                  <button class="btn btn-outline-dark">
-                      Logout
-                  </button>
-                </form> 
+                @auth
+                  <span class="">
+                    Hi there, {{ Auth::user()->name }}
+                  </span>
 
-                <form class="d-flex" action="{{ route('show.login') }}" method="GET">
-                  <button class="btn btn-outline-dark">
-                      Login
-                  </button>
-                </form> 
+                  <form class="d-flex" action="{{ route('create') }}" method="GET">
+                    <button class="btn btn-outline-dark" type="submit">
+                        Create new product
+                    </button>
+                  </form>
 
+                  <form class="d-flex" action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-outline-dark">
+                        Logout
+                    </button>
+                  </form> 
+                @endauth
 
-                <form class="d-flex" action="{{ route('show.register') }}" method="GET">
-                  <button class="btn btn-outline-dark">
-                      Register
-                  </button>
-                </form> 
+                @guest
+                  <form class="d-flex" action="{{ route('show.login') }}" method="GET">
+                    <button class="btn btn-outline-dark">
+                        Login
+                    </button>
+                  </form> 
 
-                <form class="d-flex" action="{{ route('create') }}" method="GET">
-                  <button class="btn btn-outline-dark" type="submit">
-                      Create new product
-                  </button>
-                </form>
-                              
+                  <form class="d-flex" action="{{ route('show.register') }}" method="GET">
+                    <button class="btn btn-outline-dark">
+                        Register
+                    </button>
+                  </form> 
+                @endguest
+
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
