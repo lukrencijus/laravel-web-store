@@ -8,6 +8,9 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
 </head>
 <body class="bg-light">
+<!-- Navigation-->
+<x-nav>
+</x-nav>
     <div class="container d-flex align-items-center justify-content-center min-vh-100">
         <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
             <div class="text-center mb-4">
@@ -53,5 +56,15 @@
             </form>
         </div>
     </div>
+
+        <!-- Footer-->
+        <x-footer>
+        </x-footer>
+
+
+        <!-- JavaScript for Bootstrap (local) -->
+        <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Core theme JS-->
+        <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 </html>

@@ -46,12 +46,12 @@
     </div>
 
 
-            <!-- Footer-->
+        <!-- Footer-->
         <x-footer>
         </x-footer>
 
 
-                    <!-- JavaScript for Bootstrap (local) -->
+        <!-- JavaScript for Bootstrap (local) -->
         <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
         <!-- Core theme JS-->
         <script src="{{ asset('js/scripts.js') }}"></script>

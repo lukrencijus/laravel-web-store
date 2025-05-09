@@ -10,6 +10,9 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
 </head>
 <body>
+<!-- Navigation-->
+<x-nav>
+</x-nav>
     <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6 col-lg-5">
@@ -92,6 +95,9 @@
         </div>
       </div>
       
+    <!-- Footer-->
+    <x-footer>
+    </x-footer>
 
     <!-- JavaScript for Bootstrap (local) -->
     <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>

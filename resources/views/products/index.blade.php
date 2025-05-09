@@ -51,6 +51,9 @@
             {{ $products->links() }}
         </div>
 
+    <!-- Footer-->
+    <x-footer>
+    </x-footer>
 
     <!-- JavaScript for Bootstrap (local) -->
     <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
