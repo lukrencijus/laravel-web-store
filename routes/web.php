@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
@@ -8,6 +9,10 @@ use App\Models\Product;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::get('/about', function () {return view('about');})->name('about');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 

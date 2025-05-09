@@ -6,7 +6,7 @@
     <title>Footer</title>
 </head>
 <body>
-    <footer class="py-5 bg-dark">
+    <footer class="py-5 bg-black">
         <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Web Store 2025</p></div>
     </footer>
 </body>
