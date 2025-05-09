@@ -41,15 +41,22 @@
                     </li>
                 </ul>
 
+                <form class="d-flex" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button class="btn btn-outline-dark">
+                      Logout
+                  </button>
+                </form> 
+
                 <form class="d-flex" action="{{ route('show.login') }}" method="GET">
-                  <button class="btn btn-outline-dark" type="submit">
+                  <button class="btn btn-outline-dark">
                       Login
                   </button>
                 </form> 
 
 
                 <form class="d-flex" action="{{ route('show.register') }}" method="GET">
-                  <button class="btn btn-outline-dark" type="submit">
+                  <button class="btn btn-outline-dark">
                       Register
                   </button>
                 </form> 
@@ -58,7 +65,8 @@
                   <button class="btn btn-outline-dark" type="submit">
                       Create new product
                   </button>
-                </form>              
+                </form>
+                              
                 <form class="d-flex">
                     <button class="btn btn-outline-dark" type="submit">
                         <i class="bi-cart-fill me-1"></i>
