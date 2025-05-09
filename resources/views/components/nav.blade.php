@@ -20,13 +20,13 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           @foreach($categories as $category)
-                            <li>
-                              <a class="dropdown-item"
-                                href="{{ route('categories.show', $category->id) }}">
-                                  {{ $category->name }}
-                              </a>
-                            </li>
-                          @endforeach
+                              <li>
+                                <a class="dropdown-item"
+                                  href="{{ route('categories.show', $category->id) }}">
+                                    {{ $category->name }}
+                                </a>
+                              </li>
+                            @endforeach
                         </ul>
                     </li>
                 </ul>

@@ -22,10 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('components.nav', function ($view) {
-            $view->with('categories', Category::all());
-        });
-
         Paginator::useBootstrapFive();
     }
 }

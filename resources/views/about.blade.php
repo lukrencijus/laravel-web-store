@@ -40,7 +40,9 @@
 </head>
 <body>
     <!-- Navigation-->
-    <x-nav></x-nav>
+    <x-nav>
+
+    </x-nav>
 
     <header class="bg-black text-white text-center py-5 mb-4">
         <div class="container">
@@ -88,5 +90,11 @@
 
     <!-- Footer-->
     <x-footer></x-footer>
+
+
+            <!-- JavaScript for Bootstrap (local) -->
+        <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Core theme JS-->
+        <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 </html>

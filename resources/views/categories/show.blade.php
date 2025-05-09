@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ $category->name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!-- Favicon-->
+        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="{{ asset('bootstrap-icons-1.12.1/bootstrap-icons.css') }}" rel="stylesheet" />
@@ -49,5 +49,11 @@
             <!-- Footer-->
         <x-footer>
         </x-footer>
+
+
+                    <!-- JavaScript for Bootstrap (local) -->
+        <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Core theme JS-->
+        <script src="{{ asset('js/scripts.js') }}"></script>
 </body>
 </html>
