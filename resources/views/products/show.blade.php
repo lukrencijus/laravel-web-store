@@ -1,23 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop Item - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="{{ asset('bootstrap-icons-1.12.1/bootstrap-icons.css') }}" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Navigation-->
-        <x-nav>
-        </x-nav>
+@extends('layouts.app')
 
+@section('title', 'Shop Item')
+
+@section('content')
 <!-- Product section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
@@ -48,44 +33,30 @@
                     <button
                         class="btn btn-outline-dark flex-shrink-0"
                         type="button"
-                        >
+                    >
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
 
-                    <form action="{{ route('products_destroy', $product->id) }}" method="POST">
+                    <form action="{{ route('products_destroy', $product->id) }}" method="POST" class="ms-2">
                         @csrf
                         @method('DELETE')
                         <button
-                        class="btn btn-outline-dark"
-                        type="submit"
+                            class="btn btn-outline-dark"
+                            type="submit"
                         >
-                        Delete product
+                            Delete product
                         </button>
                     </form>
 
-                    <form action="{{ route('edit', ['product' => $product->id]) }}" method="GET">
+                    <form action="{{ route('edit', ['product' => $product->id]) }}" method="GET" class="ms-2">
                         <button class="btn btn-outline-dark" type="submit">
-                            <i></i>
                             Edit product
                         </button>
                     </form>
-                    
-                    
-
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-
-        <!-- Footer-->
-        <x-footer>
-        </x-footer>
-        <!-- JavaScript for Bootstrap (local) -->
-        <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
-        <!-- Core theme JS-->
-        <script src="{{ asset('js/scripts.js') }}"></script>
-    </body>
-</html>
+@endsection

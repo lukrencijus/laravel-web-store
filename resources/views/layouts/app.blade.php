@@ -6,17 +6,16 @@
     <title>@yield('title')</title>
     <link href="{{ asset('assets/favicon.ico') }}" rel="icon" />
     <link href="{{ asset('bootstrap-icons-1.12.1/bootstrap-icons.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bootstrap-5.3.5-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
     @stack('head')
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <x-nav></x-nav>
-    <main>
+    <main class="flex-fill">
         @yield('content')
     </main>
     <x-footer></x-footer>
     <script src="{{ asset('bootstrap-5.3.5-dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
     @stack('scripts')
 </body>
 </html>
