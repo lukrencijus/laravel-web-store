@@ -34,17 +34,17 @@
             </ul>
 
             @auth
-                <span class="">
+                <span class="me-2">
                     Hi there, {{ Auth::user()->name }}
                 </span>
 
-                <form class="d-flex" action="{{ route('create') }}" method="GET">
+                <form class="d-flex me-2" action="{{ route('create') }}" method="GET">
                     <button class="btn btn-outline-dark" type="submit">
                         Create new product
                     </button>
                 </form>
 
-                <form class="d-flex" action="{{ route('logout') }}" method="POST">
+                <form class="d-flex me-2" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="btn btn-outline-dark">
                         Logout
@@ -53,13 +53,13 @@
             @endauth
 
             @guest
-                <form class="d-flex" action="{{ route('show.login') }}" method="GET">
+                <form class="d-flex me-2" action="{{ route('show.login') }}" method="GET">
                     <button class="btn btn-outline-dark">
                         Login
                     </button>
                 </form>
 
-                <form class="d-flex" action="{{ route('show.register') }}" method="GET">
+                <form class="d-flex me-2" action="{{ route('show.register') }}" method="GET">
                     <button class="btn btn-outline-dark">
                         Register
                     </button>
