@@ -4,11 +4,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 use App\Models\Product;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
