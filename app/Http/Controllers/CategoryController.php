@@ -9,6 +9,8 @@ class CategoryController extends Controller
 {
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+        $products = $category->products()->orderBy('id', 'desc')->paginate(12);
+        
+        return view('categories.show', compact('category', 'products'));
     }
 }
