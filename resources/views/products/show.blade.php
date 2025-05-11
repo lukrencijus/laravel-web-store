@@ -8,11 +8,13 @@
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
+            @if($product->image)
                 <img
-                    class="card-img-top mb-5 mb-md-0"
-                    src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg"
+                    class="card-img-top product-image-large mb-5 mb-md-0"
+                    src="{{ asset('storage/' . $product->image) }}"
                     alt="{{ $product->name }}"
                 />
+            @endif
             </div>
             <div class="col-md-6">
                 <div class="small mb-1">Product ID: {{ $product->id }}</div>

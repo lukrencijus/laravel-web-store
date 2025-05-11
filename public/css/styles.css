@@ -29,3 +29,12 @@
     object-position: center;
     display: block;
 }
+
+.product-image-large {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    max-height: 450px;
+}
