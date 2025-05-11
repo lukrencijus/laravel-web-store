@@ -34,16 +34,20 @@
             </ul>
 
             @auth
-                <span class="me-2">
-                    Hi there, {{ Auth::user()->name }}
-                </span>
+                @if(auth()->user()->isAdmin())
+                    <span class="me-2">
+                        Hi there, {{ Auth::user()->name }}
+                    </span>
 
-                <form class="d-flex me-2" action="{{ route('create') }}" method="GET">
-                    <button class="btn btn-outline-dark" type="submit">
-                        Create new product
-                    </button>
-                </form>
+                    <form class="d-flex me-2" action="{{ route('create') }}" method="GET">
+                        <button class="btn btn-outline-dark" type="submit">
+                            Create new product
+                        </button>
+                    </form>
+                @endif
+            @endauth
 
+            @auth
                 <form class="d-flex me-2" action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button class="btn btn-outline-dark">

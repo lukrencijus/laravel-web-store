@@ -37,14 +37,12 @@
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
-                    @auth
+                @auth
+                    @if(auth()->user()->isAdmin())
                         <form action="{{ route('products_destroy', $product->id) }}" method="POST" class="ms-2">
                             @csrf
                             @method('DELETE')
-                            <button
-                                class="btn btn-outline-dark"
-                                type="submit"
-                            >
+                            <button class="btn btn-outline-dark" type="submit">
                                 Delete product
                             </button>
                         </form>
@@ -54,7 +52,8 @@
                                 Edit product
                             </button>
                         </form>
-                    @endauth
+                    @endif
+                @endauth
                 </div>
             </div>
         </div>

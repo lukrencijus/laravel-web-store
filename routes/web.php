@@ -23,7 +23,7 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
     Route::post('/login', 'login')->name('login');
 });
 
-Route::middleware('auth')->controller(ProductController::class)->group(function () {
+Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {
     Route::get('/products/create', 'create')->name('create');
     Route::post('/products', 'store')->name('store');
     Route::delete('/products/{product}', 'destroy')->name('products_destroy');
