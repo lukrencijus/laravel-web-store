@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <form action="{{ route('store') }}" method="POST" class="p-4 border rounded bg-light shadow-sm mt-5">
+            <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm mt-5">
                 @csrf
                 <h2 class="mb-4 text-center">Create a New Product</h2>
 
@@ -64,6 +64,18 @@
                             </option>
                         @endforeach
                     </select>
+                </div>
+
+                <!-- Product Image -->
+                <div class="mb-3">
+                    <label for="image" class="form-label">Product Image:</label>
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                    >
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100 mt-3">Create Product</button>

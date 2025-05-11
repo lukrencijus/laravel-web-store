@@ -10,7 +10,7 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="{{ $product['image_url'] ?? 'https://dummyimage.com/450x300/dee2e6/6c757d.jpg' }}" alt="{{ $product['name'] }}" />
+                        <img class="card-img-top" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">

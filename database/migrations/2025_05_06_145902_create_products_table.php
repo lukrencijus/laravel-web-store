@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->text('desc');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->string('image')->nullable();
+            $table->string('image')->default('products/sample.png');
             $table->boolean('is_available')->default(true);
         });
     }
