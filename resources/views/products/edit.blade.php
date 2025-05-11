@@ -67,6 +67,28 @@
                     </select>
                 </div>
 
+                <!-- Product Image -->
+                <div class="mb-3">
+                    <label for="image" class="form-label">Product Image:</label>
+                    @if ($product->image)
+                        <div class="mb-2">
+                            <img src="{{ asset('storage/' . $product->image) }}" 
+                                alt="Current Product Image" 
+                                style="max-width: 150px; max-height: 150px;">
+                        </div>
+                    @endif
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="image"
+                        name="image"
+                        accept="image/*"
+                    >
+                    <small class="form-text text-muted">
+                        Leave blank to keep the current image.
+                    </small>
+                </div>
+
                 <button type="submit" class="btn btn-primary w-100 mt-3">Update Product</button>
 
                 <!-- validation errors -->
