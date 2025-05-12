@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Product;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -20,6 +22,12 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
     Route::get('/login', 'showLogin')->name('show.login');
     Route::post('/register', 'register')->name('register');
     Route::post('/login', 'login')->name('login');
+});
+
+Route::middleware(['auth'])->controller(OrderController::class)->group(function () {
+    Route::post('/orders', 'store')->name('orders');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {

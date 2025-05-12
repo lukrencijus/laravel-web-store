@@ -37,6 +37,12 @@
                 <span class="me-2">
                     Hi there, {{ Auth::user()->name }}
                 </span>
+
+                <form class="d-flex me-2" action="{{ route('profile.edit') }}" method="GET">
+                    <button class="btn btn-outline-dark" type="submit">
+                        Profile
+                    </button>
+                </form>
             @endauth
 
             @auth
