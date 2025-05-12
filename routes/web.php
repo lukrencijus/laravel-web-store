@@ -41,5 +41,6 @@ Route::middleware(['auth', 'admin'])->controller(ProductController::class)->grou
     Route::get('/products/{product}/edit', 'edit')->name('edit');
     Route::put('/products/{product}/update', 'update')->name('update');
 });
+
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products_show');
