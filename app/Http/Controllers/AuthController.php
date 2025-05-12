@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Mail\Email;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -28,7 +30,9 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return back();
+        Mail::to($user->email)->send(new Email($user->name));
+
+        return redirect()->route('products')->with('success','Registration successful! Please check your email.');
     }
 
     public function login(Request $request){

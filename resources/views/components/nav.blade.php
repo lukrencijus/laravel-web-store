@@ -34,10 +34,13 @@
             </ul>
 
             @auth
+                <span class="me-2">
+                    Hi there, {{ Auth::user()->name }}
+                </span>
+            @endauth
+
+            @auth
                 @if(auth()->user()->isAdmin())
-                    <span class="me-2">
-                        Hi there, {{ Auth::user()->name }}
-                    </span>
 
                     <form class="d-flex me-2" action="{{ route('create') }}" method="GET">
                         <button class="btn btn-outline-dark" type="submit">
