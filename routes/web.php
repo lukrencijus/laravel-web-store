@@ -25,9 +25,13 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
 });
 
 Route::middleware(['auth'])->controller(OrderController::class)->group(function () {
-    Route::post('/orders', 'store')->name('orders');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/orders', 'userOrders')->name('profile.orders');
+});
+
+Route::middleware(['auth'])->controller(ProfileController::class)->group(function () {
+    Route::get('/profile', 'index')->name('profile');
+    Route::get('/profile/edit', 'edit')->name('profile.edit');
+    Route::post('/profile/update', 'update')->name('profile.update');
 });
 
 Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {

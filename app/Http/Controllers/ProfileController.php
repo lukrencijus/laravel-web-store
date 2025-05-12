@@ -8,9 +8,15 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function edit()
+    public function index()
     {
         /** @var \App\Models\User $user */
+        $user = Auth::user();
+        return view('profile.index', compact('user'));
+    }
+
+    public function edit()
+    {
         $user = Auth::user();
         return view('profile.edit', compact('user'));
     }
