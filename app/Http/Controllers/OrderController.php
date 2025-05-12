@@ -10,8 +10,7 @@ class OrderController extends Controller
 {
     public function userOrders()
     {
-        $orders = Order::where('user_id', Auth::id())->latest()->get();
-
+        $orders = Order::where('user_id', Auth::id())->get();
         return view('profile.orders', compact('orders'));
     }
 }
