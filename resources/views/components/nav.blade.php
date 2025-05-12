@@ -34,8 +34,8 @@
             </ul>
 
             @auth
-                <span class="me-2">
-                    Hi there, {{ Auth::user()->name }}
+                <span class="me-3">
+                    Hello, {{ Auth::user()->name }}
                 </span>
 
                 <form class="d-flex me-2" action="{{ route('profile') }}" method="GET">
@@ -47,12 +47,31 @@
 
             @auth
                 @if(auth()->user()->isAdmin())
-
-                    <form class="d-flex me-2" action="{{ route('create') }}" method="GET">
-                        <button class="btn btn-outline-dark" type="submit">
-                            Create new product
-                        </button>
-                    </form>
+                    <ul class="navbar-nav me-2">
+                        <li class="nav-item dropdown">
+                            <a class="btn btn-primary dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin actions
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('create') }}">
+                                        Create new product
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('create') }}">
+                                        Create new product
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('create') }}">
+                                        Create new product
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 @endif
             @endauth
 
