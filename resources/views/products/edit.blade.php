@@ -6,9 +6,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <form action="{{ route('update', $product->id) }}" method="post" class="p-4 border rounded bg-light shadow-sm mt-5">
+            <form action="{{ route('update', $product->id) }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm mt-5">
                 @csrf
-                @method('put')
+                @method('PUT')
                 <h2 class="mb-4 text-center">Edit Product</h2>
 
                 <!-- Product Name -->
@@ -75,6 +75,18 @@
                             <img src="{{ asset('storage/' . $product->image) }}" 
                                 alt="Current Product Image" 
                                 style="max-width: 150px; max-height: 150px;">
+                        </div>
+                        <div class="form-check mb-2">
+                            <input
+                                class="form-check-input"
+                                type="checkbox"
+                                name="remove_image"
+                                id="remove_image"
+                                value="1"
+                            >
+                            <label class="form-check-label" for="remove_image">
+                                Remove current image
+                            </label>
                         </div>
                     @endif
                     <input

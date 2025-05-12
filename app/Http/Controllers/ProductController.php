@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -69,7 +70,23 @@ class ProductController extends Controller
             'price' => 'required|integer|min:0',
             'desc' => 'required|string|min:0',
             'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
+
+        if ($request->has('remove_image') && $product->image) {
+            Storage::disk('public')->delete($product->image);
+            $validated['image'] = 'products/sample.png';
+        }
+
+        if ($request->hasFile('image')) {
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $imagePath = $request->file('image')->store('products', 'public');
+            $validated['image'] = $imagePath;
+        } elseif (!$request->has('remove_image')) {
+            $validated['image'] = $product->image;
+        }
 
         $product->update($validated);
 
