@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm mt-5">
+            <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm mt-5">
                 @csrf
                 <h2 class="mb-4 text-center">Create a New Product</h2>
 

@@ -41,7 +41,7 @@
                     </button>
                 @auth
                     @if(auth()->user()->isAdmin())
-                        <form action="{{ route('products_destroy', $product->id) }}" method="POST" class="ms-2">
+                        <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="ms-2">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-outline-dark" type="submit">
@@ -49,7 +49,7 @@
                             </button>
                         </form>
 
-                        <form action="{{ route('edit', ['product' => $product->id]) }}" method="GET" class="ms-2">
+                        <form action="{{ route('products.edit', ['product' => $product->id]) }}" method="GET" class="ms-2">
                             <button class="btn btn-outline-dark" type="submit">
                                 Edit product
                             </button>

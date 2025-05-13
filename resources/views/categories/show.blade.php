@@ -6,6 +6,25 @@
 <div class="container py-5">
     <div class="card shadow-sm">
         <div class="card-body">
+            @auth
+                @if(auth()->user()->isAdmin())
+                    <div class="d-flex">
+                        <form action="{{ route('categories.destroy', $category) }}" method="POST" class="me-2">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-outline-dark" type="submit">
+                                Delete category
+                            </button>
+                        </form>
+
+                        <form action="{{ route('categories.edit', $category) }}" method="GET">
+                            <button class="btn btn-outline-dark" type="submit">
+                                Edit category
+                            </button>
+                        </form>
+                    </div>
+                @endif
+            @endauth
             <h1 class="card-title mb-3">{{ $category->name }}</h1>
             <p class="card-text text-muted">{{ $category->description }}</p>
         </div>

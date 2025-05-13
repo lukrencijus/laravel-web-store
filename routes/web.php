@@ -11,8 +11,6 @@ use App\Models\Product;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-
 Route::get('/about', function () {return view('about');})->name('about');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -35,12 +33,22 @@ Route::middleware(['auth'])->controller(ProfileController::class)->group(functio
 });
 
 Route::middleware(['auth', 'admin'])->controller(ProductController::class)->group(function () {
-    Route::get('/products/create', 'create')->name('create');
-    Route::post('/products', 'store')->name('store');
-    Route::delete('/products/{product}', 'destroy')->name('products_destroy');
-    Route::get('/products/{product}/edit', 'edit')->name('edit');
-    Route::put('/products/{product}/update', 'update')->name('update');
+    Route::get('/products/create', 'create')->name('products.create');
+    Route::post('/products', 'store')->name('products.store');
+    Route::delete('/products/{product}', 'destroy')->name('products.destroy');
+    Route::get('/products/{product}/edit', 'edit')->name('products.edit');
+    Route::put('/products/{product}/update', 'update')->name('products.update');
 });
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products_show');
+
+Route::middleware(['auth', 'admin'])->controller(CategoryController::class)->group(function () {
+    Route::get('/categories/create', 'create')->name('categories.create');
+    Route::post('/categories', 'store')->name('categories.store');
+    Route::delete('/categories/{category}', 'destroy')->name('categories.destroy');
+    Route::get('/categories/{category}/edit', 'edit')->name('categories.edit');
+    Route::put('/categories/{category}/update', 'update')->name('categories.update');
+});
+
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');

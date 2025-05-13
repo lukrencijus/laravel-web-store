@@ -55,17 +55,17 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('create') }}">
+                                    <a class="dropdown-item" href="{{ route('products.create') }}">
                                         Create new product
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('create') }}">
-                                        Create new product
+                                    <a class="dropdown-item" href="{{ route('categories.create') }}">
+                                        Create new category
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('create') }}">
+                                    <a class="dropdown-item" href="{{ route('products.create') }}">
                                         Create new product
                                     </a>
                                 </li>

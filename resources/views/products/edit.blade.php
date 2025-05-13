@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6 col-lg-5">
-            <form action="{{ route('update', $product->id) }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm mt-5">
+            <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow-sm mt-5">
                 @csrf
                 @method('PUT')
                 <h2 class="mb-4 text-center">Edit Product</h2>
