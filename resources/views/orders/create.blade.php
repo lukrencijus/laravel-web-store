@@ -36,8 +36,26 @@
         </div>
 
         <div class="mb-3">
-            <label for="total_amount" class="form-label">Total Amount</label>
-            <input type="number" step="0.01" class="form-control" id="total_amount" name="total_amount" value="{{ old('total_amount') }}" required>
+            <label class="form-label">Products</label>
+            <div class="row">
+                @foreach($products as $product)
+                    <div class="col-md-6 mb-2">
+                        <div class="input-group">
+                            <span class="input-group-text" style="width: 200px;">
+                                {{ $product->name }} (${{ number_format($product->price, 2) }})
+                            </span>
+                            <input
+                                type="number"
+                                min="0"
+                                name="products[{{ $product->id }}]"
+                                class="form-control"
+                                value="{{ old('products.' . $product->id, 0) }}"
+                                placeholder="Quantity"
+                            >
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary w-100 mt-3">Create Order</button>

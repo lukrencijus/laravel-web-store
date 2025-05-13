@@ -23,7 +23,6 @@ class OrderFactory extends Factory
             'user_id' => User::inRandomOrder()->first()?->id ?? User::factory(),
             'order_date' => $this->faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d'),
             'status' => $this->faker->randomElement(['pending', 'completed', 'cancelled']),
-            'total_amount' => $this->faker->randomFloat(2, 10, 500),
         ];
     }
 }

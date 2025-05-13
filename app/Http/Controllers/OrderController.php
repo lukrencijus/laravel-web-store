@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -26,8 +27,9 @@ class OrderController extends Controller
     public function create()
     {
         $users = User::all();
+        $products = Product::all();
         $statuses = ['pending', 'processing', 'completed'];
-        return view('orders.create', compact('users', 'statuses'));
+        return view('orders.create', compact('users', 'products', 'statuses'));
     }
 
     // Store new order (admin)
@@ -37,10 +39,30 @@ class OrderController extends Controller
             'user_id' => 'required|exists:users,id',
             'order_date' => 'required|date',
             'status' => 'required|in:pending,processing,completed',
-            'total_amount' => 'required|numeric|min:0',
+            'products' => 'required|array',
+            'products.*' => 'integer|min:0',
         ]);
 
-        Order::create($validated);
+        $total = 0;
+        $attachData = [];
+        foreach ($validated['products'] as $productId => $quantity) {
+            if ($quantity > 0) {
+                $product = Product::find($productId);
+                if ($product) {
+                    $total += $product->price * $quantity;
+                    $attachData[$productId] = ['quantity' => $quantity];
+                }
+            }
+        }
+
+        $order = Order::create([
+            'user_id' => $validated['user_id'],
+            'order_date' => $validated['order_date'],
+            'status' => $validated['status'],
+            'total_amount' => $total,
+        ]);
+
+        $order->products()->attach($attachData);
 
         return redirect()->route('orders.index')->with('success', 'Order created!');
     }
@@ -48,9 +70,11 @@ class OrderController extends Controller
     // Show edit form (admin)
     public function edit(Order $order)
     {
-        $users = \App\Models\User::all();
+        $users = User::all();
+        $products = Product::all();
         $statuses = ['pending', 'processing', 'completed'];
-        return view('orders.edit', compact('order', 'users', 'statuses'));
+        $orderProducts = $order->products->pluck('pivot.quantity', 'id')->toArray();
+        return view('orders.edit', compact('order', 'users', 'products', 'statuses', 'orderProducts'));
     }
 
     // Update order (admin)
@@ -60,10 +84,30 @@ class OrderController extends Controller
             'user_id' => 'required|exists:users,id',
             'order_date' => 'required|date',
             'status' => 'required|in:pending,processing,completed',
-            'total_amount' => 'required|numeric|min:0',
+            'products' => 'required|array',
+            'products.*' => 'integer|min:0',
         ]);
 
-        $order->update($validated);
+        $total = 0;
+        $syncData = [];
+        foreach ($validated['products'] as $productId => $quantity) {
+            if ($quantity > 0) {
+                $product = Product::find($productId);
+                if ($product) {
+                    $total += $product->price * $quantity;
+                    $syncData[$productId] = ['quantity' => $quantity];
+                }
+            }
+        }
+
+        $order->update([
+            'user_id' => $validated['user_id'],
+            'order_date' => $validated['order_date'],
+            'status' => $validated['status'],
+            'total_amount' => $total,
+        ]);
+
+        $order->products()->sync($syncData);
 
         return redirect()->route('orders.index')->with('success', 'Order updated!');
     }
@@ -71,6 +115,7 @@ class OrderController extends Controller
     // Delete order (admin)
     public function destroy(Order $order)
     {
+        $order->products()->detach();
         $order->delete();
         return redirect()->route('orders.index')->with('success', 'Order deleted!');
     }
