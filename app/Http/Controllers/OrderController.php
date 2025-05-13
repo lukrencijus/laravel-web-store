@@ -10,20 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    // List all orders (admin)
     public function index()
     {
         $orders = Order::all();
         return view('orders.index', compact('orders'));
     }
 
-    // Show a single order (admin)
     public function show(Order $order)
     {
         return view('orders.show', compact('order'));
     }
 
-    // Show create form (admin)
     public function create()
     {
         $users = User::all();
@@ -32,7 +29,6 @@ class OrderController extends Controller
         return view('orders.create', compact('users', 'products', 'statuses'));
     }
 
-    // Store new order (admin)
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -67,7 +63,6 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order created!');
     }
 
-    // Show edit form (admin)
     public function edit(Order $order)
     {
         $users = User::all();
@@ -77,7 +72,6 @@ class OrderController extends Controller
         return view('orders.edit', compact('order', 'users', 'products', 'statuses', 'orderProducts'));
     }
 
-    // Update order (admin)
     public function update(Request $request, Order $order)
     {
         $validated = $request->validate([
@@ -112,7 +106,6 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order updated!');
     }
 
-    // Delete order (admin)
     public function destroy(Order $order)
     {
         $order->products()->detach();
@@ -120,10 +113,16 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order deleted!');
     }
 
-    // User's own orders
+
+
     public function userOrders()
     {
         $orders = Order::where('user_id', Auth::id())->get();
         return view('profile.orders', compact('orders'));
+    }
+
+    public function userShow(Order $order)
+    {
+        return view('profile.show', compact('order'));
     }
 }

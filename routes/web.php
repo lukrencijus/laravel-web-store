@@ -25,6 +25,7 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
 
 Route::middleware(['auth'])->controller(OrderController::class)->group(function () {
     Route::get('/profile/orders', 'userOrders')->name('profile.orders');
+    Route::get('/profile/orders/{order}', 'userShow')->name('profile.orders.show');
 });
 
 Route::middleware(['auth'])->controller(ProfileController::class)->group(function () {

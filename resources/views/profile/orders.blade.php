@@ -18,6 +18,7 @@
                         <th>Status</th>
                         <th>Total</th>
                         <th>Date</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,7 @@
                             <td>{{ ucfirst($order->status) }}</td>
                             <td>${{ number_format($order->total_amount, 2) }}</td>
                             <td>{{ \Carbon\Carbon::parse($order->order_date)->format('Y-m-d') }}</td>
+                            <td><a href="{{ route('profile.orders.show', $order->id) }}" class="btn btn-info btn-sm">View</a></td>
                         </tr>
                     @endforeach
                 </tbody>
