@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
@@ -44,10 +45,10 @@ Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products_show');
 
 Route::middleware(['auth', 'admin'])->controller(OrderController::class)->group(function () {
-    Route::get('/orders/{order}', 'show')->name('orders.show');
-    Route::get('/orders', 'index')->name('orders.index');
     Route::get('/orders/create', 'create')->name('orders.create');
     Route::post('/orders', 'store')->name('orders.store');
+    Route::get('/orders', 'index')->name('orders.index');
+    Route::get('/orders/{order}', 'show')->name('orders.show');
     Route::delete('/orders/{order}', 'destroy')->name('orders.destroy');
     Route::get('/orders/{order}/edit', 'edit')->name('orders.edit');
     Route::put('/orders/{order}/update', 'update')->name('orders.update');
@@ -62,3 +63,13 @@ Route::middleware(['auth', 'admin'])->controller(CategoryController::class)->gro
 });
 
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::middleware(['auth', 'admin'])->controller(UserController::class)->group(function () {
+    Route::get('/users/create', 'create')->name('users.create');
+    Route::post('/users', 'store')->name('users.store');
+    Route::get('/users', 'index')->name('users.index');
+    Route::get('/users/{user}', 'show')->name('users.show');
+    Route::delete('/users/{user}', 'destroy')->name('users.destroy');
+    Route::get('/users/{user}/edit', 'edit')->name('users.edit');
+    Route::put('/users/{user}/update', 'update')->name('users.update');
+});

@@ -65,7 +65,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('categories.create') }}">
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">
                                         Manage users
                                     </a>
                                 </li>
