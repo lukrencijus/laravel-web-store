@@ -103,13 +103,19 @@
                 </form>
             @endguest
 
-            <form class="d-flex">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi-cart-fill me-1"></i>
-                    Cart
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                </button>
-            </form>
+            @php
+                $cart = session('cart', []);
+                $cartCount = collect($cart)->sum('quantity');
+            @endphp
+
+            <a href="{{ route('cart.view') }}" class="btn btn-outline-dark">
+                <i class="bi-cart-fill me-1"></i>
+                Cart
+                <span class="badge bg-dark text-white ms-1 rounded-pill">
+                    {{ $cartCount }}
+                </span>
+            </a>
+
         </div>
     </div>
 </nav>

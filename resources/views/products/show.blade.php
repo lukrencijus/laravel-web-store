@@ -3,7 +3,6 @@
 @section('title', 'Shop Item')
 
 @section('content')
-<!-- Product section-->
 <section class="py-5">
     <div class="container px-4 px-lg-5 my-5">
         <div class="row gx-4 gx-lg-5 align-items-center">
@@ -25,20 +24,13 @@
                 </div>
                 <p class="lead">{{ $product->desc }}</p>
                 <div class="d-flex">
-                    <input
-                        class="form-control text-center me-3"
-                        id="inputQuantity"
-                        type="number"
-                        value="1"
-                        style="max-width: 3rem"
-                    />
-                    <button
-                        class="btn btn-outline-dark flex-shrink-0"
-                        type="button"
-                    >
+                <form action="{{ route('cart.add', $product->id) }}" method="POST" class="d-inline">
+                    @csrf
+                    <button class="btn btn-outline-dark flex-shrink-0" type="submit">
                         <i class="bi-cart-fill me-1"></i>
                         Add to cart
                     </button>
+                </form>
                 @auth
                     @if(auth()->user()->isAdmin())
                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="ms-2">
