@@ -43,6 +43,16 @@ Route::middleware(['auth', 'admin'])->controller(ProductController::class)->grou
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products_show');
 
+Route::middleware(['auth', 'admin'])->controller(OrderController::class)->group(function () {
+    Route::get('/orders/{order}', 'show')->name('orders.show');
+    Route::get('/orders', 'index')->name('orders.index');
+    Route::get('/orders/create', 'create')->name('orders.create');
+    Route::post('/orders', 'store')->name('orders.store');
+    Route::delete('/orders/{order}', 'destroy')->name('orders.destroy');
+    Route::get('/orders/{order}/edit', 'edit')->name('orders.edit');
+    Route::put('/orders/{order}/update', 'update')->name('orders.update');
+});
+
 Route::middleware(['auth', 'admin'])->controller(CategoryController::class)->group(function () {
     Route::get('/categories/create', 'create')->name('categories.create');
     Route::post('/categories', 'store')->name('categories.store');

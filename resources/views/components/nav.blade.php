@@ -65,8 +65,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('products.create') }}">
-                                        Create new product
+                                    <a class="dropdown-item" href="{{ route('categories.create') }}">
+                                        Manage users
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('orders.index') }}">
+                                        Manage orders
                                     </a>
                                 </li>
                             </ul>
