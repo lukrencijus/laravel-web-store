@@ -3,17 +3,15 @@
 @section('title', 'Order index')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-4">
         <h1>All Orders</h1>
-
-        <a href="{{ route('orders.create') }}" class="btn btn-success mb-3">Create Order</a>
-
+        <a href="{{ route('orders.create') }}" class="btn btn-primary mb-3">Create Order</a>
         @if($orders->isEmpty())
             <div class="alert alert-info">
                 There are no orders
             </div>
         @else
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Order #</th>
@@ -46,5 +44,6 @@
                 </tbody>
             </table>
         @endif
+        {{ $orders->links() }}
     </div>
 @endsection

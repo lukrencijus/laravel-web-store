@@ -24,7 +24,7 @@
                                 </select>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary">Show Rates</button>
+                                <button type="submit" class="btn btn-outline-dark">Show Rates</button>
                             </div>
                         </div>
                     </form>

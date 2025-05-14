@@ -3,7 +3,7 @@
 @section('title', 'Cart')
 
 @section('content')
-    <div class="container py-4">
+    <div class="container mt-4">
         <h2 class="mb-4">Your Cart</h2>
 
         @if(count($cart) > 0)

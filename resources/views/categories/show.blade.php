@@ -12,13 +12,11 @@
                         <form action="{{ route('categories.destroy', $category) }}" method="POST" class="me-2">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-outline-dark" type="submit">
-                                Delete category
-                            </button>
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Delete category?')">Delete category</button>
                         </form>
 
                         <form action="{{ route('categories.edit', $category) }}" method="GET">
-                            <button class="btn btn-outline-dark" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 Edit category
                             </button>
                         </form>

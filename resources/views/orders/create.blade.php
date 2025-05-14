@@ -56,6 +56,9 @@
                     </div>
                 @endforeach
             </div>
+            <div class="mt-3">
+                {{ $products->links() }}
+            </div>
         </div>
 
         <button type="submit" class="btn btn-primary w-100 mt-3">Create Order</button>

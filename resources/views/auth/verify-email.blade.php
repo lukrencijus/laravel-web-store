@@ -3,7 +3,7 @@
 @section('title', 'Verify Email')
 
 @section('content')
-<div class="container py-5">
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm border-0">

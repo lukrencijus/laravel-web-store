@@ -12,7 +12,8 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::orderBy('id', 'desc')->paginate(12);
+
         return view('orders.index', compact('orders'));
     }
 
@@ -25,6 +26,7 @@ class OrderController extends Controller
     {
         $users = User::all();
         $products = Product::all();
+        $products = Product::paginate(14);
         $statuses = ['pending', 'processing', 'completed'];
         return view('orders.create', compact('users', 'products', 'statuses'));
     }
@@ -69,10 +71,38 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         $users = User::all();
-        $products = Product::all();
         $statuses = ['pending', 'processing', 'completed'];
         $orderProducts = $order->products->pluck('pivot.quantity', 'id')->toArray();
-        return view('orders.edit', compact('order', 'users', 'products', 'statuses', 'orderProducts'));
+
+        $selectedProductIds = array_keys($orderProducts);
+
+        $selectedProducts = Product::whereIn('id', $selectedProductIds)
+            ->orderBy('name')
+            ->get();
+
+        $unselectedProducts = Product::whereNotIn('id', $selectedProductIds)
+            ->orderBy('name')
+            ->get();
+
+        $allProducts = $selectedProducts->concat($unselectedProducts);
+
+        $page = request()->get('page', 1);
+        $perPage = 14;
+        $paginatedProducts = new \Illuminate\Pagination\LengthAwarePaginator(
+            $allProducts->forPage($page, $perPage),
+            $allProducts->count(),
+            $perPage,
+            $page,
+            ['path' => request()->url(), 'query' => request()->query()]
+        );
+
+        return view('orders.edit', [
+            'order' => $order,
+            'users' => $users,
+            'products' => $paginatedProducts,
+            'statuses' => $statuses,
+            'orderProducts' => $orderProducts,
+        ]);
     }
 
     public function update(Request $request, Order $order)
@@ -119,11 +149,12 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order deleted!');
     }
 
-
-
     public function userOrders()
     {
-        $orders = Order::where('user_id', Auth::id())->get();
+        $orders = Order::where('user_id', Auth::id())
+            ->orderBy('id', 'desc')
+            ->paginate(12);
+
         return view('profile.orders', compact('orders'));
     }
 
@@ -133,7 +164,6 @@ class OrderController extends Controller
             abort(403);
         }
 
-        return view('orders.show', compact('order'));
+        return view('profile.show', compact('order'));
     }
-
 }

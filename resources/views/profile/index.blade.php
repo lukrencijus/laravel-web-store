@@ -3,7 +3,7 @@
 @section('title', 'Profile')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-4">
         <h1>Profile</h1>
 
         <ul class="list-group mb-4">

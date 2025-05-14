@@ -17,7 +17,7 @@
     <div class="col-lg-6 col-xxl-4 my-5 mx-auto">
         <div class="d-grid gap-2">
             <a href="{{ route('products') }}"
-            class="btn btn-outline-secondary w-75 w-md-auto mx-auto"
+            class="btn btn-outline-dark w-75 w-md-auto mx-auto"
             role="button">
                 View all products
             </a>

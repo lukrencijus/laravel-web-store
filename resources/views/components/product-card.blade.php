@@ -1,12 +1,10 @@
 <div class="col mb-5">
     <div class="card h-100">
-        <!-- Product image-->
         <div class="product-image-wrapper">
             <img class="card-img-top"
                  src="{{ $image ?? asset('storage/' . $product->image ?? '') }}"
                  alt="{{ $product->name }}" />
         </div>
-        <!-- Product details-->
         <div class="card-body p-4">
             <div class="text-center">
                 <h5 class="fw-bolder">{{ $product->name }}</h5>

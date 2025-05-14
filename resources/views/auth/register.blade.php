@@ -63,7 +63,7 @@
             <div class="d-flex flex-column align-items-center">
                 <a href="{{ route('login') }}" class="mt-2">Already have an account? Login</a>
             </div>
-            <!-- validation errors -->
+
             @if ($errors->any())
                 <div class="alert alert-danger mt-3">
                     <ul>

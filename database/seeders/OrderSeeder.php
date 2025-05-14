@@ -10,7 +10,7 @@ class OrderSeeder extends Seeder
 {
     public function run()
     {
-        $orders = Order::factory()->count(10)->create();
+        $orders = Order::factory()->count(20)->create();
         $productIds = Product::pluck('id')->all();
 
         foreach ($orders as $order) {

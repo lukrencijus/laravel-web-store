@@ -39,7 +39,6 @@
             <a href="{{ route('register') }}" class="mt-2">Don't have an account? Register</a>
             </div>
 
-            <!-- validation errors -->
             @if ($errors->any())
                 <div class="alert alert-danger mt-3">
                     <ul>

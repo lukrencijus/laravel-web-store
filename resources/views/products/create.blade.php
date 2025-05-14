@@ -10,7 +10,6 @@
                 @csrf
                 <h2 class="mb-4 text-center">Create a New Product</h2>
 
-                <!-- Product Name -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Product Name:</label>
                     <input
@@ -23,7 +22,6 @@
                     >
                 </div>
 
-                <!-- Product Price -->
                 <div class="mb-3">
                     <label for="price" class="form-label">Product Price:</label>
                     <input
@@ -36,7 +34,6 @@
                     >
                 </div>
 
-                <!-- Product Description -->
                 <div class="mb-3">
                     <label for="desc" class="form-label">Description:</label>
                     <textarea
@@ -48,7 +45,6 @@
                     >{{ old('desc') }}</textarea>
                 </div>
 
-                <!-- Select Product Category -->
                 <div class="mb-3">
                     <label for="category_id" class="form-label">Category:</label>
                     <select
@@ -66,7 +62,6 @@
                     </select>
                 </div>
 
-                <!-- Product Image -->
                 <div class="mb-3">
                     <label for="image" class="form-label">Product Image:</label>
                     <input
@@ -80,7 +75,6 @@
 
                 <button type="submit" class="btn btn-primary w-100 mt-3">Create Product</button>
 
-                <!-- validation errors -->
                 @if ($errors->any())
                     <div class="alert alert-danger mt-3">
                         <ul>

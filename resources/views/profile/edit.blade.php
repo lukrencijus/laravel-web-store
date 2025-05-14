@@ -3,8 +3,8 @@
 @section('title', 'Edit profile')
 
 @section('content')
-<div class="container">
-    <h2>Edit Profile</h2>
+<div class="container mt-4">
+    <h1>Edit Profile</h1>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -39,6 +39,7 @@
             <input type="password" name="password_confirmation" class="form-control">
         </div>
 
+        <a href="{{ route('profile') }}" class="btn btn-outline-dark">Back to Profile</a>
         <button type="submit" class="btn btn-primary">Update Profile</button>
     </form>
 </div>

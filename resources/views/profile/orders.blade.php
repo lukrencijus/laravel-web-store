@@ -3,7 +3,7 @@
 @section('title', 'Orders')
 
 @section('content')
-    <div class="container">
+    <div class="container mt-4">
         <h1>Your Orders</h1>
 
         @if($orders->isEmpty())
@@ -33,6 +33,8 @@
                     @endforeach
                 </tbody>
             </table>
+            <a href="{{ route('profile') }}" class="btn btn-outline-dark">Back to Profile</a>
         @endif
+        {{ $orders->links() }}
     </div>
 @endsection

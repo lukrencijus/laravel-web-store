@@ -11,5 +11,4 @@ class HomeController extends Controller
         $products = \App\Models\Product::orderBy('id', 'desc')->take(8)->get();
         return view('home', compact('products'));
     }
-
 }

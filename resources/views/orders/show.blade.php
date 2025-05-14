@@ -3,7 +3,7 @@
 @section('title', 'Order Details')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <h1>Order #{{ $order->id }}</h1>
     <ul class="list-group">
         <li class="list-group-item"><strong>User:</strong> {{ $order->user->name ?? 'N/A' }}</li>

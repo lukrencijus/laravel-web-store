@@ -11,7 +11,6 @@
                 @method('PUT')
                 <h2 class="mb-4 text-center">Edit Category</h2>
 
-                <!-- Category Name -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Category Name:</label>
                     <input
@@ -24,7 +23,6 @@
                     >
                 </div>
 
-                <!-- Category Description -->
                 <div class="mb-3">
                     <label for="description" class="form-label">Description:</label>
                     <textarea
@@ -38,7 +36,6 @@
 
                 <button type="submit" class="btn btn-primary w-100 mt-3">Update Category</button>
 
-                <!-- validation errors -->
                 @if ($errors->any())
                     <div class="alert alert-danger mt-3">
                         <ul>

@@ -36,13 +36,11 @@
                         <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="ms-2">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-outline-dark" type="submit">
-                                Delete product
-                            </button>
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('Delete product?')">Delete product</button>
                         </form>
 
                         <form action="{{ route('products.edit', ['product' => $product->id]) }}" method="GET" class="ms-2">
-                            <button class="btn btn-outline-dark" type="submit">
+                            <button class="btn btn-primary" type="submit">
                                 Edit product
                             </button>
                         </form>
