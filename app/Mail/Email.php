@@ -27,7 +27,7 @@ class Email extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Thank you for registering',
+            subject: 'Welcome message',
         );
     }
 

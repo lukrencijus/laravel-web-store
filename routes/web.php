@@ -10,20 +10,44 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
-use App\Models\Product;
+use App\Http\Controllers\ExchangeRateController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Email;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/about', function () {return view('about');})->name('about');
 
+Route::get('/exchange-rates', [ExchangeRateController::class, 'show'])->name('exchange.rates');
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    $user = $request->user();
+    Mail::to($user->email)->send(new Email($user->name));
+    return redirect('/products')->with('success', 'Email verified!');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::post('/cart/add/{productId}', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'view'])->name('cart.view');
 Route::post('/cart/remove/{productId}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/decrease/{productId}', [CartController::class, 'removeQ'])->name('cart.removeQ');
 
-Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout')->middleware('auth');
+Route::post('/checkout', [CheckoutController::class, 'checkout'])
+    ->name('checkout')
+    ->middleware(['auth', 'verified']);
 
 Route::middleware('guest')->controller(AuthController::class)->group(function () {
     Route::get('/register', 'showRegister')->name('show.register');

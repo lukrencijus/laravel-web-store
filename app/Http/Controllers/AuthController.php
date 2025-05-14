@@ -30,9 +30,10 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        Mail::to($user->email)->send(new Email($user->name));
+        $user->sendEmailVerificationNotification();
 
-        return redirect()->route('products')->with('success','Registration successful! Please check your email.');
+        return redirect()->route('verification.notice')
+        ->with('success','Registration successful! Please check your email for verification.');
     }
 
     public function login(Request $request){

@@ -15,6 +15,9 @@
                     <a class="nav-link" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('exchange.rates') }}">Exchange rates</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('products') }}">Products</a>
                 </li>
                 <li class="nav-item dropdown">
