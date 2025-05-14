@@ -60,7 +60,10 @@ class OrderController extends Controller
 
         $order->products()->attach($attachData);
 
-        return redirect()->route('orders.index')->with('success', 'Order created!');
+        return redirect()
+            ->route('orders.show', $order)
+            ->with('success', 'Order created!');
+
     }
 
     public function edit(Order $order)
@@ -103,7 +106,10 @@ class OrderController extends Controller
 
         $order->products()->sync($syncData);
 
-        return redirect()->route('orders.index')->with('success', 'Order updated!');
+        return redirect()
+            ->route('orders.show', $order)
+            ->with('success', 'Order updated!');
+
     }
 
     public function destroy(Order $order)
@@ -123,6 +129,11 @@ class OrderController extends Controller
 
     public function userShow(Order $order)
     {
-        return view('profile.show', compact('order'));
+        if ($order->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        return view('orders.show', compact('order'));
     }
+
 }

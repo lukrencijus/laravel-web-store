@@ -43,6 +43,6 @@ class ProfileController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('products')->with('success', 'Profile updated!');
+        return redirect()->route('profile')->with('success', 'Profile updated!');
     }
 }

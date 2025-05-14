@@ -33,7 +33,12 @@
                     placeholder="Enter your password"
                 >
             </div>
+            
+            <div class="d-flex flex-column align-items-center">
             <button type="submit" class="btn btn-primary w-100 mt-3">Log In</button>
+            <a href="{{ route('register') }}" class="mt-2">Don't have an account? Register</a>
+            </div>
+
             <!-- validation errors -->
             @if ($errors->any())
                 <div class="alert alert-danger mt-3">

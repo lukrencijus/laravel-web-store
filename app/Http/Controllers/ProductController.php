@@ -42,9 +42,12 @@ class ProductController extends Controller
             $validated['image'] = $imagePath;
         }
 
-        Product::create($validated);
+        $product = Product::create($validated);
 
-        return redirect()->route('products')->with('success','Product Created!');
+        return redirect()
+            ->route('products_show', $product)
+            ->with('success', 'Product Created!');
+
     }
 
     public function destroy(Product $product){
@@ -87,9 +90,11 @@ class ProductController extends Controller
         } elseif (!$request->has('remove_image')) {
             $validated['image'] = $product->image;
         }
-
         $product->update($validated);
 
-        return redirect()->route('products')->with('success','Product updated!');
+        return redirect()
+            ->route('products_show', $product)
+            ->with('success', 'Product updated!');
+
     }
 }

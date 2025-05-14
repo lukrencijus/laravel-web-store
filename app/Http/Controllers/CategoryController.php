@@ -25,9 +25,11 @@ class CategoryController extends Controller
             'description' => 'required|string|min:0',
         ]);
 
-        Category::create($validated);
+        $category = Category::create($validated);
 
-        return redirect()->route('products')->with('success', 'Category Created!');
+        return redirect()
+            ->route('categories.show', $category)
+            ->with('success', 'Category Created!');
     }
 
     public function destroy(Category $category)
@@ -50,6 +52,8 @@ class CategoryController extends Controller
 
         $category->update($validated);
 
-        return redirect()->route('products')->with('success', 'Category updated!');
+    return redirect()
+        ->route('categories.show', $category)
+        ->with('success', 'Category updated!');
     }
 }

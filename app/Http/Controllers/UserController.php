@@ -33,9 +33,11 @@ class UserController extends Controller
 
         $validated['password'] = Hash::make($validated['password']);
 
-        User::create($validated);
+        $user = User::create($validated);
 
-        return redirect()->route('users.index')->with('success', 'User created!');
+        return redirect()
+        ->route('users.show', $user)
+        ->with('success', 'User created!');
     }
 
     // Display the specified user
@@ -68,7 +70,10 @@ class UserController extends Controller
 
         $user->update($validated);
 
-        return redirect()->route('users.index')->with('success', 'User updated!');
+        return redirect()
+            ->route('users.show', $user)
+            ->with('success', 'User updated!');
+
     }
 
     // Remove the specified user from storage

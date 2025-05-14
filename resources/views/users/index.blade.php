@@ -6,9 +6,6 @@
 <div class="container mt-4">
     <h1 class="mb-4">Users</h1>
     <a href="{{ route('users.create') }}" class="btn btn-primary mb-3">Create User</a>
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
     <table class="table table-bordered table-striped">
         <thead class="table-light">
             <tr>
