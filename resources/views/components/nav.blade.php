@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="{{ route('home') }}">Web Store</a>
+    <div class="container-fluid px-4 px-lg-5">
+        <a class="navbar-brand px-5" href="{{ route('home') }}">Web Store</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                 </li>
@@ -36,27 +36,23 @@
                 </li>
             </ul>
 
-            @auth
-                <span class="me-3">
-                    Hello, {{ Auth::user()->name }}
-                </span>
-
-                <form class="d-flex me-2" action="{{ route('profile') }}" method="GET">
-                    <button class="btn btn-outline-dark" type="submit">
-                        Profile
-                    </button>
-                </form>
-            @endauth
-
-            @auth
-                @if(auth()->user()->isAdmin())
-                    <ul class="navbar-nav me-2">
-                        <li class="nav-item dropdown">
-                            <a class="btn btn-primary dropdown-toggle" id="navbarDropdown" href="#" role="button"
+            <div class="d-flex align-items-center ms-auto gap-2 flex-wrap px-5">
+                @auth
+                    <span class="me-2">
+                        Hello, {{ Auth::user()->name }}
+                    </span>
+                    <form action="{{ route('profile') }}" method="GET" class="m-0">
+                        <button class="btn btn-outline-dark" type="submit">
+                            Profile
+                        </button>
+                    </form>
+                    @if(auth()->user()->isAdmin())
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" id="adminDropdown" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Admin actions
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
                                 <li>
                                     <a class="dropdown-item" href="{{ route('products.create') }}">
                                         Create new product
@@ -78,19 +74,15 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                    </ul>
-                @endif
-            @endauth
-
-            @auth
-                <form class="d-flex me-2" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button class="btn btn-outline-dark">
-                        Logout
-                    </button>
-                </form>
-            @endauth
+                        </div>
+                    @endif
+                    <form action="{{ route('logout') }}" method="POST" class="m-0">
+                        @csrf
+                        <button class="btn btn-outline-dark">
+                            Logout
+                        </button>
+                    </form>
+                @endauth
 
             @guest
                 <form class="d-flex me-2" action="{{ route('show.login') }}" method="GET">
@@ -122,9 +114,3 @@
         </div>
     </div>
 </nav>
-
-@if (session('success'))
-    <div id="flash" class="alert alert-success text-center fw-bold" role="alert">
-        {{ session('success') }}
-    </div>
-@endif
