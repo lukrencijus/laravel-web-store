@@ -21,3 +21,14 @@ A web store application built with Laravel, PHP, and SQLite. This project includ
 - Factories, Migrations, and Seeders: Simplifies database setup and testing.
 - Components and Layouts: Reusable UI components and layouts for consistent design.
 - Routes: Well-organized routes for all application features.
+
+![sw 2025-05-31 at 15 01 19](https://github.com/user-attachments/assets/7c51c85b-2a81-4d23-a2d4-9d4b794a74ef)
+
+
+![sw 2025-05-31 at 15 01 43](https://github.com/user-attachments/assets/cace7755-40d6-4829-9990-7851273a27c5)
+
+
+![sw 2025-05-31 at 15 02 06](https://github.com/user-attachments/assets/1bfe53c6-5330-4974-be67-8876c7ac4b14)
+
+
+![sw 2025-05-31 at 15 02 22](https://github.com/user-attachments/assets/b1321677-f286-4fc0-9127-83575340d81c)
